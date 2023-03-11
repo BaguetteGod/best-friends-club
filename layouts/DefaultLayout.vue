@@ -98,46 +98,44 @@ const { currentRoute } = useRouter();
 
 const scrollArea = ref();
 const fullscreenNav = ref();
-const currentHover = ref('');
 const navIndicators: Ref<Tween[]> = ref([]);
+const navOpen = ref(false);
 const timer = ref();
 
 const navTimeline = gsap.timeline().reversed(true);
 
 provide('scrollArea', scrollArea);
 
-const toggleHover = (event: PointerEvent, target: string) => {
-  if (event.type === 'mouseover') {
-    clearTimeout(timer.value);
-    currentHover.value = target;
+const toggleHover = (event: PointerEvent | null, target: string) => {
+  if (!event || event.type === 'mouseleave') {
+    timer.value = setTimeout(() => {
+      navIndicators.value.forEach((indicator: Tween) => {
+        const indicatorTarget = indicator.targets()[0] as HTMLElement;
+        const routeCurrent = currentRoute.value.name as string;
 
-    navIndicators.value.forEach((indicator: Tween) => {
-      const indicatorTarget = indicator.targets()[0] as HTMLElement;
+        if (indicatorTarget.classList.contains(routeCurrent)) {
+          indicator.reversed(false);
+          return;
+        }
 
-      if (indicatorTarget.classList.contains(target.toString())) {
-        indicator.reversed(!indicator.reversed());
-        return;
-      }
-
-      indicator.reversed(true);
-    });
+        indicator.reversed(true);
+      });
+    }, 1000);
     return;
   }
-  currentHover.value = '';
 
-  timer.value = setTimeout(() => {
-    navIndicators.value.forEach((indicator: Tween) => {
-      const indicatorTarget = indicator.targets()[0] as HTMLElement;
-      const routeCurrent = currentRoute.value.name as string;
+  clearTimeout(timer.value);
 
-      if (indicatorTarget.classList.contains(routeCurrent)) {
-        indicator.reversed(!indicator.reversed());
-        return;
-      }
+  navIndicators.value.forEach((indicator: Tween) => {
+    const indicatorTarget = indicator.targets()[0] as HTMLElement;
 
-      indicator.reversed(true);
-    });
-  }, 1000);
+    if (indicatorTarget.classList.contains(target.toString())) {
+      indicator.reversed(false);
+      return;
+    }
+
+    indicator.reversed(true);
+  });
 };
 
 onMounted(() => {
@@ -205,7 +203,14 @@ onMounted(() => {
 });
 
 const toggleMenu = () => {
+  navOpen.value = !navOpen.value;
   navTimeline.reversed(!navTimeline.reversed());
+
+  if (navOpen.value) {
+    const routeCurrent = currentRoute.value.name as string;
+    toggleHover(null, routeCurrent);
+  }
+
   navIndicators.value.forEach((indicator) => {
     indicator.reversed(true);
   });
