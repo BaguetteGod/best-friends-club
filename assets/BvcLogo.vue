@@ -4,7 +4,7 @@
     data-name="Layer 1"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 445.59 412.72"
-    class="w-auto h-10 relative backdrop-invert"
+    class="w-auto h-10 relative"
     width="50px"
     height="50px"
     fill="#231f20"

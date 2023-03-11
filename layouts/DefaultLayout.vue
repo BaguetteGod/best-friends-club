@@ -1,91 +1,213 @@
 <template>
-  <div class="flex flex-row justify-between p-8 fixed w-full z-10 items-center">
+  <div class="flex flex-row justify-between p-8 fixed w-full z-30 items-center">
     <div>
-      <NuxtLink to="/" class="text-gray-800 w-8 h-8"> <BvcLogo /> </NuxtLink>
-      <div class="menu-toggle">
-        <div id="menu-toggle-button">
+      <NuxtLink to="/" class="text-gray-800 w-8 h-8">
+        <BvcLogo class="logo-link" />
+      </NuxtLink>
+      <div>
+        <div>
           <span />
         </div>
       </div>
     </div>
-    <div v-if="menuOpen" class="nav-container">
-      <div class="flex flex-row items-center gap-8">
-        <div class="flex flex-col">
-          <BvcLogo />
+
+    <div
+      class="flex flex-col gap-2 cursor-pointer bar-container"
+      @click="toggleMenu"
+    >
+      <span class="bg-gray-900 w-6 h-0.5 rounded-full bar bar-top" />
+      <span class="bg-gray-900 w-6 h-0.5 rounded-full bar bar-bot" />
+    </div>
+  </div>
+
+  <div
+    ref="fullscreenNav"
+    class="fixed h-screen w-screen z-20 overflow-hidden flex flex-row items-center w-full h-full justify-center text-7xl gap-32"
+    style="backdrop-filter: blur(0); background: rgba(0, 41, 21, 0)"
+  >
+    <div class="overflow-hidden block">
+      <BvcLogo class="w-72 h-72 relative block nav-logo fill-white" />
+    </div>
+    <div class="flex flex-col text-white gap-8 relative m-0">
+      <div class="overflow-hidden block flex items-center gap-10">
+        <NuxtLink
+          class="relative block nav-link"
+          :class="currentRoute.name === 'index' ? 'opacity-50' : 'text-white'"
+          to="/"
+          @click="toggleMenu"
+          @mouseover="toggleHover($event, 'index')"
+          @mouseleave="toggleHover($event, 'index')"
+        >
+          Home
+        </NuxtLink>
+        <div class="w-8">
+          <NavIndicator class="mt-1 nav-indicator opacity-0 index" />
         </div>
-        <div class="flex flex-col">
-          <div class="nav-link">
-            <NuxtLink to="/">Home</NuxtLink>
-            <div class="nav-item-wrapper" />
-          </div>
-          <div class="nav-link">
-            <NuxtLink to="/">Tijdlijn</NuxtLink>
-            <div class="nav-item-wrapper" />
-          </div>
-          <div class="nav-link">
-            <NuxtLink to="/">Over ons</NuxtLink>
-            <div class="nav-item-wrapper" />
-          </div>
+      </div>
+      <div class="overflow-hidden block flex items-center gap-10">
+        <NuxtLink
+          class="relative block nav-link"
+          :class="
+            currentRoute.name === 'timeline' ? 'opacity-50' : 'text-white'
+          "
+          to="/timeline"
+          @click="toggleMenu"
+          @mouseover="toggleHover($event, 'timeline')"
+          @mouseleave="toggleHover($event, 'timeline')"
+        >
+          Tijdlijn
+        </NuxtLink>
+        <div class="w-8">
+          <NavIndicator class="mt-1 nav-indicator opacity-0 timeline" />
+        </div>
+      </div>
+      <div class="overflow-hidden block flex items-center gap-10">
+        <NuxtLink
+          class="relative block nav-link"
+          :class="currentRoute.name === 'about' ? 'opacity-50' : 'text-white'"
+          to="/about"
+          @click="toggleMenu"
+          @mouseover="toggleHover($event, 'about')"
+          @mouseleave="toggleHover($event, 'about')"
+        >
+          Over ons
+        </NuxtLink>
+        <div class="w-8">
+          <NavIndicator class="mt-1 nav-indicator opacity-0 about" />
         </div>
       </div>
     </div>
-
-    <Bars2Icon class="h-8 w-8 text-gray-800 cursor-pointer" />
   </div>
 
   <div
     id="scroll-area"
     ref="scrollArea"
-    class="h-full overflow-y-auto flex flex-col grow scroll-smooth"
+    class="h-fit flex flex-col grow scroll-smooth"
   >
     <slot />
   </div>
 </template>
 
 <script setup lang="ts">
-import { Bars2Icon } from '@heroicons/vue/24/outline';
+import gsap from 'gsap';
 import BvcLogo from 'assets/BvcLogo.vue';
+import NavIndicator from 'assets/NavIndicator.vue';
+import Tween = gsap.core.Tween;
 
-const menuOpen = ref(false);
-const scrollArea = ref(null);
+const { currentRoute } = useRouter();
 
-// TODO: Keep track of previous scroll distance to top, compare to currentY to check if scrolling up or down
+const scrollArea = ref();
+const fullscreenNav = ref();
+const currentHover = ref('');
+const navIndicators: Ref<Tween[]> = ref([]);
+const timer = ref();
 
-// let currentThreshold = 0;
-// const maxThreshold = 1;
-// const thresholdArray: number[] = [];
-// while (currentThreshold < maxThreshold) {
-//   thresholdArray.push(currentThreshold);
-//   currentThreshold += 0.01;
-// }
-//
-// onMounted(() => {
-//   const options = {
-//     root: null,
-//     rootMargin: '0px',
-//     threshold: thresholdArray,
-//   };
-//
-//   const intersectionCallback = (entries: [IntersectionObserverEntry]): void => {
-//     entries.forEach((entry: IntersectionObserverEntry) => {
-//       const currentY = entry.boundingClientRect.y;
-//       const elementHeight = entry.boundingClientRect.height;
-//       const { isIntersecting } = entry;
-//
-//       if (isIntersecting) {
-//         const imageDiv = entry.target.children[0] as HTMLElement;
-//         if (currentY !== 0) {
-//           imageDiv.style.transform = `scale(${(3 * currentY) / elementHeight})`;
-//         }
-//       }
-//     });
-//   };
-//
-//   const observer = new IntersectionObserver(intersectionCallback, options);
-//
-//   const scalableImages = document.querySelectorAll('.scalableImages');
-//   scalableImages.forEach((el) => {
-//     observer.observe(el);
-//   });
-// });
+const navTimeline = gsap.timeline().reversed(true);
+
+provide('scrollArea', scrollArea);
+
+const toggleHover = (event: PointerEvent, target: string) => {
+  if (event.type === 'mouseover') {
+    clearTimeout(timer.value);
+    currentHover.value = target;
+
+    navIndicators.value.forEach((indicator: Tween) => {
+      const indicatorTarget = indicator.targets()[0] as HTMLElement;
+
+      if (indicatorTarget.classList.contains(target.toString())) {
+        indicator.reversed(!indicator.reversed());
+        return;
+      }
+
+      indicator.reversed(true);
+    });
+    return;
+  }
+  currentHover.value = '';
+
+  timer.value = setTimeout(() => {
+    navIndicators.value.forEach((indicator: Tween) => {
+      const indicatorTarget = indicator.targets()[0] as HTMLElement;
+      const routeCurrent = currentRoute.value.name as string;
+
+      if (indicatorTarget.classList.contains(routeCurrent)) {
+        indicator.reversed(!indicator.reversed());
+        return;
+      }
+
+      indicator.reversed(true);
+    });
+  }, 1000);
+};
+
+onMounted(() => {
+  document.querySelectorAll('.nav-indicator').forEach((indicator) => {
+    const navIndicator = gsap
+      .to(indicator, { opacity: 1, duration: 0.5, delay: 0.5, x: -10 })
+      .reversed(true);
+    navIndicators.value.push(navIndicator);
+  });
+
+  navTimeline.to(fullscreenNav.value, {
+    backdropFilter: 'blur(48px)',
+    background: 'rgba(0, 41, 21, 0.4)',
+    duration: 0.5,
+  });
+  navTimeline.from('.nav-link', 1, {
+    y: 150,
+    ease: 'power4.out',
+    stagger: {
+      amount: 0.3,
+    },
+  });
+  navTimeline.from(
+    '.nav-logo',
+    1,
+    {
+      x: 400,
+      ease: 'power4.out',
+      stagger: {
+        amount: 0.3,
+      },
+    },
+    '+0.75'
+  );
+  navTimeline.to(
+    '.bar-top',
+    {
+      rotation: -45,
+      duration: 0.5,
+      transformOrigin: 'center',
+      backgroundColor: 'white',
+      y: +5,
+    },
+    '0'
+  );
+  navTimeline.to(
+    '.bar-bot',
+    {
+      rotation: 45,
+      duration: 0.5,
+      transformOrigin: 'center',
+      backgroundColor: 'white',
+      y: -5,
+    },
+    '0'
+  );
+  navTimeline.to(
+    '.logo-link',
+    {
+      duration: 0.5,
+      fill: 'white',
+    },
+    '0'
+  );
+});
+
+const toggleMenu = () => {
+  navTimeline.reversed(!navTimeline.reversed());
+  navIndicators.value.forEach((indicator) => {
+    indicator.reversed(true);
+  });
+};
 </script>
