@@ -9,7 +9,7 @@
         <ImageComponent image-id="first-image" />
 
         <div
-            class="text-8xl text-wrap max-w-2xl text-center h-full flex flex-col justify-between items-center p-20"
+          class="text-8xl text-wrap max-w-2xl text-center h-full flex flex-col justify-between items-center p-20"
         >
           <span>'s Werelds meest iconische en besloten organisatie</span>
 
@@ -31,7 +31,7 @@
         <ImageComponent image-id="second-image" />
 
         <div
-            class="text-8xl text-wrap max-w-2xl text-center h-full flex flex-col justify-between items-center p-20"
+          class="text-8xl text-wrap max-w-2xl text-center h-full flex flex-col justify-between items-center p-20"
         >
           <span>'s Werelds meest iconische en besloten organisatie</span>
 
@@ -47,7 +47,7 @@
         <ImageComponent image-id="third-image" />
 
         <div
-            class="text-8xl text-wrap max-w-2xl text-center h-full flex flex-col justify-between items-center p-20"
+          class="text-8xl text-wrap max-w-2xl text-center h-full flex flex-col justify-between items-center p-20"
         >
           <span>'s Werelds meest iconische en besloten organisatie</span>
 
