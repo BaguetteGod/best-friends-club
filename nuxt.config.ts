@@ -5,7 +5,10 @@ export default defineNuxtConfig({
   build: {
     transpile: ['gsap'],
   },
-  meta: {
-    title: 'De Beste Vrienden Club',
+  app: {
+    head: {
+      charset: 'utf-16',
+      title: 'De Beste Vrienden Club',
+    },
   },
 });
