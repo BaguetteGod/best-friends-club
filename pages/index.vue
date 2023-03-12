@@ -6,7 +6,7 @@
       <span>De Beste</span>
       <span>Vrienden Club</span>
     </h1>
-    <div class="flex flex-col h-screen w-full pt-10 lg:pt-20 lg:px-10 pb-10">
+    <div class="flex flex-col h-fit w-full pt-10 lg:pt-20 lg:px-10 pb-10">
       <div class="flex flex-col lg:flex-row gap-12 h-full">
         <div class="w-full overflow-hidden h-fit zoom-element">
           <div
@@ -16,7 +16,7 @@
         </div>
 
         <div
-          class="text-5xl lg:text-8xl text-wrap max-w-2xl text-center h-full flex flex-col justify-between items-center p-4 lg:p-20"
+          class="text-5xl lg:text-8xl text-wrap max-w-2xl text-center h-fit lg:h-full flex flex-col lg:justify-between items-center p-4 lg:p-20"
         >
           <span>'s Werelds meest iconische en besloten organisatie</span>
 

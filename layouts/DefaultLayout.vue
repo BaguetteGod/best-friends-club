@@ -4,7 +4,7 @@
   >
     <div>
       <NuxtLink to="/" class="text-gray-800 w-8 h-8">
-        <BvcLogo class="logo-link" />
+        <BvcLogo class="logo-link" width-height="40px" />
       </NuxtLink>
       <div>
         <div>
@@ -94,8 +94,8 @@
 import gsap from 'gsap';
 import BvcLogo from 'assets/BvcLogo.vue';
 import NavIndicator from 'assets/NavIndicator.vue';
-import Tween = gsap.core.Tween;
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Tween = gsap.core.Tween;
 
 const { currentRoute } = useRouter();
 
