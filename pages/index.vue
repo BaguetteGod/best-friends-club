@@ -20,7 +20,7 @@
         >
           <span>'s Werelds meest iconische en besloten organisatie</span>
 
-          <div class="lg:pb-40">
+          <div class="pt-20 lg:pb-40">
             <BvcLogo class="w-20 h-20 lg:h-40 lg:w-40" />
           </div>
         </div>
@@ -36,7 +36,7 @@
           />
         </div>
         <div
-          class="w-full h-full bg-black absolute flex flex-col gap-8 items-center justify-center px-10 lg:px-40 text-white text-center"
+          class="w-full h-screen bg-black absolute flex flex-col gap-8 items-center justify-center px-10 lg:px-40 text-white text-center"
           style="background: rgba(0, 0, 0, 0.6)"
         >
           <div
@@ -76,8 +76,8 @@
     </div>
 
     <div class="flex flex-col h-screen w-full pt-10 lg:pt-20 lg:px-10 pb-10">
-      <div class="flex flex-col lg:flex-row gap-12 h-full">
-        <div class="w-3/5 overflow-hidden h-fit zoom-element">
+      <div class="flex flex-col-reverse lg:flex-row gap-12 h-fit lg:h-full">
+        <div class="w-full lg:w-3/5 overflow-hidden h-fit zoom-element">
           <div
             id="image-members"
             class="w-full scale-150 lg:scale-200 image-style image-scaling bg-cover bg-bottom"
@@ -85,11 +85,11 @@
         </div>
 
         <div
-          class="text-5xl lg:text-8xl text-wrap w-2/5 text-left h-full flex flex-col justify-center items-center p-4 lg:p-20"
+          class="text-5xl lg:text-8xl text-wrap w-full lg:w-2/5 text-left h-fit lg:h-full flex flex-col justify-center items-center p-4 lg:p-20"
         >
           <span class="w-full">Onze Leden</span>
 
-          <span class="pt-20 text-3xl">
+          <span class="pt-10 lg:pt-20 text-3xl">
             De leden van De Beste Vrienden Club bestaan uit een groep
             gelijkgestemde, zorgvuldig geselecteerde mensen die een passie delen
             voor de goede dingen in het leven.
