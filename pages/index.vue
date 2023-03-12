@@ -1,15 +1,18 @@
 <template>
-  <div class="pt-40 lg:pt-60 h-fit flex flex-col gap-12 grow">
+  <div class="pt-40 lg:pt-60 h-fit flex flex-col grow font-semibold pb-40">
     <h1
-      class="text-6xl lg:text-20xl text-emerald-800 opacity-40 w-full px-4 lg:px-10 flex flex-col"
+      class="text-6xl lg:text-20xl text-emerald-800 opacity-40 w-full px-4 lg:px-10 flex flex-col font-normal"
     >
       <span>De Beste</span>
       <span>Vrienden Club</span>
     </h1>
-    <div class="flex flex-col h-screen w-full lg:px-10 pb-10">
+    <div class="flex flex-col h-screen w-full pt-10 lg:pt-20 lg:px-10 pb-10">
       <div class="flex flex-col lg:flex-row gap-12 h-full">
         <div class="w-full overflow-hidden h-fit zoom-element">
-          <div class="w-full scale-150 lg:scale-200 image-style image-scaling" />
+          <div
+            id="image-landing"
+            class="w-full scale-150 image-style image-scaling bg-cover bg-center"
+          />
         </div>
 
         <div
@@ -24,11 +27,81 @@
       </div>
     </div>
 
-    <div class="h-96" />
-    <div class="h-96" />
-    <div class="h-96" />
-    <div class="h-96" />
-    <div class="h-96" />
+    <div class="flex flex-col h-fit w-full pt-10 lg:pt-40">
+      <div class="flex flex-col lg:flex-row gap-12 h-full">
+        <div class="w-full overflow-hidden h-fit zoom-element">
+          <div
+            id="image-location"
+            class="w-full scale-125 lg:scale-200 image-style image-scaling bg-cover bg-center"
+          />
+        </div>
+        <div
+          class="w-full h-full bg-black absolute flex flex-col gap-8 items-center justify-center px-10 lg:px-40 text-white text-center"
+          style="background: rgba(0, 0, 0, 0.6)"
+        >
+          <div
+            class="max-w-7xl flex flex-col gap-8 items-center justify-center"
+          >
+            <h3 class="uppercase text-2xl lg:text-7xl">
+              In onze thuisstad, Nijmegen. maar twee steden verder dan waar het
+              allemaal begon in 2011.
+            </h3>
+            <h5 class="text-xl lg:px-20 lg:text-4xl">
+              De Beste Vrienden Club is getransformeerd tot een iconische
+              besloten organisatie, die bekend is over de hele wereld.
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col bg-emerald-50 w-full">
+      <div class="flex flex-col lg:flex-row gap-12 h-full p-20 lg:p-40">
+        <h3 class="text-2xl lg:text-7xl max-w-2xl">
+          In de kern blijft De Beste Vrienden Club een organisatie waar zijn
+          leden entertainment zoeken, en anderen entertainen.
+        </h3>
+      </div>
+    </div>
+
+    <div class="flex flex-col h-fit w-full">
+      <div class="flex flex-col lg:flex-row gap-12 h-full">
+        <div class="w-full overflow-hidden h-fit zoom-element">
+          <div
+            id="image-location-two"
+            class="w-full scale-125 lg:scale-200 image-style image-scaling bg-bottom"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col h-screen w-full pt-10 lg:pt-20 lg:px-10 pb-10">
+      <div class="flex flex-col lg:flex-row gap-12 h-full">
+        <div class="w-3/5 overflow-hidden h-fit zoom-element">
+          <div
+            id="image-members"
+            class="w-full scale-150 lg:scale-200 image-style image-scaling bg-cover bg-bottom"
+          />
+        </div>
+
+        <div
+          class="text-5xl lg:text-8xl text-wrap w-2/5 text-left h-full flex flex-col justify-center items-center p-4 lg:p-20"
+        >
+          <span class="w-full">Onze Leden</span>
+
+          <span class="pt-20 text-3xl">
+            De leden van De Beste Vrienden Club bestaan uit een groep
+            gelijkgestemde, zorgvuldig geselecteerde mensen die een passie delen
+            voor de goede dingen in het leven.
+          </span>
+
+          <span class="pt-4 text-xl font-normal">
+            Dit zorgt voor een diverse mix van interessante en dynamische mensen
+            van onder andere nieuwe en gevestigde werelden.
+          </span>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
