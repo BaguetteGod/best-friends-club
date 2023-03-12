@@ -1,5 +1,7 @@
 <template>
-  <div class="flex flex-row justify-between p-8 fixed w-full z-30 items-center">
+  <div
+    class="flex flex-row justify-between p-4 lg:px-8 lg:py-6 fixed z-30 items-center w-screen bg-white main-nav"
+  >
     <div>
       <NuxtLink to="/" class="text-gray-800 w-8 h-8">
         <BvcLogo class="logo-link" />
@@ -22,10 +24,10 @@
 
   <div
     ref="fullscreenNav"
-    class="fixed h-screen w-screen z-20 overflow-hidden flex flex-row items-center w-full h-full justify-center text-7xl gap-32"
+    class="fixed h-screen w-screen z-20 overflow-hidden hidden flex-row items-center w-full h-full justify-center text-5xl lg:text-7xl gap-32"
     style="backdrop-filter: blur(0); background: rgba(0, 41, 21, 0)"
   >
-    <div class="overflow-hidden block">
+    <div class="overflow-hidden hidden lg:block">
       <BvcLogo class="w-72 h-72 relative block nav-logo fill-white" />
     </div>
     <div class="flex flex-col text-white gap-8 relative m-0">
@@ -93,6 +95,7 @@ import gsap from 'gsap';
 import BvcLogo from 'assets/BvcLogo.vue';
 import NavIndicator from 'assets/NavIndicator.vue';
 import Tween = gsap.core.Tween;
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const { currentRoute } = useRouter();
 
@@ -139,6 +142,23 @@ const toggleHover = (event: PointerEvent | null, target: string) => {
 };
 
 onMounted(() => {
+  const navAnimation = gsap
+    .from('.main-nav', {
+      yPercent: -100,
+      paused: true,
+      duration: 0.5,
+      opacity: 0,
+    })
+    .progress(1);
+
+  ScrollTrigger.create({
+    start: 'top top',
+    end: 99999,
+    onUpdate: (self) => {
+      self.direction === -1 ? navAnimation.play() : navAnimation.reverse();
+    },
+  });
+
   document.querySelectorAll('.nav-indicator').forEach((indicator) => {
     const navIndicator = gsap
       .to(indicator, { opacity: 1, duration: 0.5, delay: 0.5, x: -10 })
@@ -149,6 +169,7 @@ onMounted(() => {
   navTimeline.to(fullscreenNav.value, {
     backdropFilter: 'blur(48px)',
     background: 'rgba(0, 41, 21, 0.4)',
+    display: 'flex',
     duration: 0.5,
   });
   navTimeline.from('.nav-link', 1, {
@@ -199,6 +220,14 @@ onMounted(() => {
       fill: 'white',
     },
     '0'
+  );
+  navTimeline.to(
+    '.main-nav',
+    {
+      duration: 0.25,
+      backgroundColor: 'transparent',
+    },
+    '-0.25'
   );
 });
 

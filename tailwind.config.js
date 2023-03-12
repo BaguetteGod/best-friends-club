@@ -9,15 +9,21 @@ module.exports = {
   ],
   theme: {
     extend: {
+      scale: {
+        200: '2.0',
+      },
       fontFamily: {
-        garamond: ['Cormorant Garamond', 'serif']
+        garamond: ['Cormorant Garamond', 'serif'],
       },
       fontSize: {
-        '20xl': ['16rem', {
-          lineHeight: 1
-        }]
-      }
-    }
+        '20xl': [
+          '16rem',
+          {
+            lineHeight: 1,
+          },
+        ],
+      },
+    },
   },
   plugins: [],
 };
