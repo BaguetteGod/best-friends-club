@@ -5,4 +5,7 @@ export default defineNuxtConfig({
   build: {
     transpile: ['gsap'],
   },
+  meta: {
+    title: 'De Beste Vrienden Club',
+  },
 });
