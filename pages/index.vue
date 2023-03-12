@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-40 lg:pt-60 h-fit flex flex-col grow font-semibold pb-40">
+  <div class="pt-40 lg:pt-60 h-fit flex flex-col grow font-semibold pb-10 lg:pb-40">
     <h1
       class="text-6xl lg:text-20xl text-emerald-800 opacity-40 w-full px-4 lg:px-10 flex flex-col font-normal"
     >
@@ -75,7 +75,7 @@
       </div>
     </div>
 
-    <div class="flex flex-col h-screen w-full pt-10 lg:pt-20 lg:px-10 pb-10">
+    <div class="flex flex-col h-fit w-full pt-10 lg:pt-20 lg:px-10">
       <div class="flex flex-col-reverse lg:flex-row gap-12 h-fit lg:h-full">
         <div class="w-full lg:w-3/5 overflow-hidden h-fit zoom-element">
           <div
