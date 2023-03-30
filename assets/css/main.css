@@ -28,6 +28,10 @@
     background-image: url('https://images.unsplash.com/photo-1604741948035-aa4c9ef0fcec?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80');
   }
 
+  #image-about {
+    background-image: url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80');
+  }
+
   ::-webkit-scrollbar {
     display: none;
   }

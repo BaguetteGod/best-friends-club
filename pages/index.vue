@@ -1,5 +1,7 @@
 <template>
-  <div class="pt-40 lg:pt-60 h-fit flex flex-col grow font-semibold pb-10 lg:pb-40">
+  <div
+    class="pt-40 lg:pt-60 h-fit flex flex-col grow font-semibold pb-10 lg:pb-40"
+  >
     <h1
       class="text-6xl lg:text-20xl text-emerald-800 opacity-40 w-full px-4 lg:px-10 flex flex-col font-normal"
     >

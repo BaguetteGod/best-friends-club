@@ -46,23 +46,7 @@
           <NavIndicator class="mt-1 nav-indicator opacity-0 index" />
         </div>
       </div>
-      <div class="overflow-hidden block flex items-center gap-10">
-        <NuxtLink
-          class="relative block nav-link"
-          :class="
-            currentRoute.name === 'timeline' ? 'opacity-50' : 'text-white'
-          "
-          to="/timeline"
-          @click="toggleMenu"
-          @mouseover="toggleHover($event, 'timeline')"
-          @mouseleave="toggleHover($event, 'timeline')"
-        >
-          Tijdlijn
-        </NuxtLink>
-        <div class="w-8">
-          <NavIndicator class="mt-1 nav-indicator opacity-0 timeline" />
-        </div>
-      </div>
+
       <div class="overflow-hidden block flex items-center gap-10">
         <NuxtLink
           class="relative block nav-link"
