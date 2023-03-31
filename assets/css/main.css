@@ -32,6 +32,22 @@
     background-image: url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80');
   }
 
+  #image-sjebbel {
+    background-image: url('assets/sjebbel.jpg');
+  }
+
+  #image-mekkle {
+    background-image: url('assets/mekkle.jpg');
+  }
+
+  #image-stini {
+    background-image: url('assets/stini.jpg');
+  }
+
+  #image-wjettnie {
+    background-image: url('assets/wjettnie.jpg');
+  }
+
   ::-webkit-scrollbar {
     display: none;
   }
