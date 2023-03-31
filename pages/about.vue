@@ -55,7 +55,7 @@
 
           <span class="pt-4 text-xl font-normal w-full">
             "De definitie van Sybren is keer op keer hetzelfde proberen en
-            andere resultaten verwacthen."
+            andere resultaten verwachten."
           </span>
         </div>
       </div>
